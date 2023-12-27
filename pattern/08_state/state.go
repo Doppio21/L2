@@ -27,23 +27,22 @@ func (s *System) ChangeState() {
 	switch s.state {
 	case Working:
 		fmt.Println("State: Working")
-		s.setState(Working)
+		s.setState(Sleep)
 	case Sleep:
 		fmt.Println("State: Sleep")
-		s.setState(Sleep)
+		s.setState(Off)
 	case Off:
 		fmt.Println("State: Off")
-		s.setState(Off)
+		s.setState(Working)
 	}
 }
 
 
 
 func main() {
-	systemState := System{state: Working}
-
-	for i := 0; i < 3; i++ {
-		systemState.setState(SystemState(i))
+	systemState := System{}
+	systemState.setState(SystemState(0))
+	for i := 0; i < 6; i++ {
 		systemState.ChangeState()
 	}
 }
